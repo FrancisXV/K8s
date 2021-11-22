@@ -4,8 +4,18 @@ metadata:
   name: multipod
 spec:
   containers:
-    - image: nginx:1.18-alpine
-      name: nginx
-    - image: debian:buster-slim
-      name: debian
-      command: ["sleep", "300"]
+    - name: nginx
+      image: nginx:1.18-alpine
+      volumeMounts:
+        - name: partage-multipod
+          mountPath: /usr/share/nginx/html
+    - name: debian
+      image: debian:buster-slim
+      command: ["/bin/bash"]
+      args: ["-c", "echo Message depuis debian satellite > /partage/index.html"]
+      volumeMounts:
+        - name: partage-multipod
+          mountPath: /partage
+  volumes:
+    - name: partage-multipod
+      emptyDir: {}

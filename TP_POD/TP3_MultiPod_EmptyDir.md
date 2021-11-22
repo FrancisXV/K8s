@@ -39,6 +39,24 @@ spec:
 
 ### 4. Appliquer le fichier de spec multipod.yaml
 
+```bash
+$ kubectl apply -f multipod
+```
+
 ### 5. Observer les ressources et leur status
 
+```bash
+$ kubectl get pods
+```
+
+> Le conteneur  debian est redémarré 3X, le status passe en CrashLoopBackOff
+
+> Puis encore tentative
+
+> UN POD fait tout maintenir ses conteneurs UP
+
 ### 6. Via port-forward afficher la page web
+
+```bash
+kubectl port-forward multipod 8080:80
+```
