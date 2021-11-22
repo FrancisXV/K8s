@@ -34,7 +34,7 @@
     - direnv (loader automatiquement un fichier d'environnement : .envrc
 
 
-- Auto-cpmpletion à mettre en place
+- Auto-completion à mettre en place
 
 
     > https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
