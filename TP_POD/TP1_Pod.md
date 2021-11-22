@@ -13,7 +13,7 @@ Créez un fichier yaml *whoami.yaml* définissant un Pod ayant les propriétés 
 
 ### 2. Lancement du Pod
 
-Lancez le Pod à l'aide de *kubectl*
+Lancez le Pod à l'aide de *kubectl apply -f whoami.yaml*
 
 ### 3. Vérification
 
@@ -25,101 +25,10 @@ Observez les détails du Pod à l'aide de *kubectl* et retrouvez l'information d
 
 ### 5. Accès à l'application via un port-forward
 
-Avec la commande *kubectl port-forward* envoyer une requête à l'application
+Avec la commande *kubectl port-forward whoami 8080:80* envoyer une requête à l'application
 
 ### 6. Suppression du Pod
 
 Supprimez le Pod.
 
 
-## Correction
-
-### 1. Création de la spécification
-
-La spécification, définie dans le fichier *whoami.yaml*, est la suivante:
-
-```
-apiVersion: v1             
-kind: Pod                  
-metadata:
-  name: whoami
-spec:
-  containers:
-  - name: whoami
-    image: containous/whoami
-```
-
-### 2. Lancement du Pod
-
-Le Pod peut être créé avec la commande suivante:
-
-```
-$ kubectl apply -f whoami.yaml
-```
-
-### 3. Vérification
-
-La commande suivante permet de lister les Pods présent:
-
-```
-$ kubectl get pods
-NAME      READY     STATUS    RESTARTS   AGE
-whoami    1/1       Running   0          14s
-```
-
-Note: il est aussi possible de précisez *pod* (au singulier) ou simplement *po*
-
-```
-$ kubectl get pod
-NAME      READY     STATUS    RESTARTS   AGE
-whoami    1/1       Running   0          16s
-
-$ kubectl get po
-NAME      READY     STATUS    RESTARTS   AGE
-whoami    1/1       Running   0          22s
-```
-
-### 4. Details du Pod
-
-Les details d'un Pod peuvent être obtenus avec la commande suivante:
-
-```
-$ kubectl describe pod whoami
-```
-
-### 5. Accès à l'application via un port-forward
-
-Depuis un premier terminal lancez la commande suivante:
-
-```
-$ kubectl port-forward whoami 8888:80
-```
-
-Depuis un second terminal, vérifiez que l'application est accessible sur localhost depuis le port 8888:
-
-```
-$ curl localhost:8888
-Hostname: whoami
-IP: 127.0.0.1
-IP: 10.244.1.4
-RemoteAddr: 127.0.0.1:51562
-GET / HTTP/1.1
-Host: localhost:8888
-User-Agent: curl/7.64.1
-Accept: */*
-```
-
-
-### 6. Suppression du Pod
-
-Le Pod peut etre supprimé avec la commande suivante:
-
-```
-$ kubectl delete po/whoami
-```
-
-ou
-
-```
-kubectl delete -f TP1_Pod/whoami.yaml
-```
