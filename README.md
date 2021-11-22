@@ -60,3 +60,19 @@
 - Inspection de la resource pod nginx :
 
   ```$ kubectl describe pods nginx```
+
+- Logs d'un POD :
+
+   ```$ kubectl logs nginx```
+
+- Exécution d'une commande dans un conteneur du pod :
+
+   ```$ kubectl exec nginx -- curl http://localhost```
+
+- Se connecter dans un conteneur du POD :
+
+    ```bash
+    $ kubectl exec -it nginx -- bash
+    $ kubectl exec -it nginx -- sh
+    ```
+
