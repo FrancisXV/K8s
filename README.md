@@ -25,5 +25,17 @@
 
     ```bash
     $ kubectl config --help
-    $ kubectl set-context .....
+    $ kubectl config set-context .....
     ```
+
+- Outils tiers :
+
+    - https://github.com/ahmetb/kubectx (gérer les contextes et namespaces Kubernetes)
+    - direnv (loader automatiquement un fichier d'environnement : .envrc
+
+
+- Auto-cpmpletion à mettre en place
+
+
+    > https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
+    > https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
