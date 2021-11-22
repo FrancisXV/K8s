@@ -13,6 +13,7 @@
     ```bash
     $ kubectl cluster-info
     $ kubectl get nodes
+    $ kubectl get nodes -o wide
     ```
 
 ## Client kubectl
@@ -47,6 +48,12 @@
 
 ## Les ressources du cluster
 
+- Lister les ressources dans mon cluster 
+
+```bash
+$ kubectl api-resources
+```
+
 ### POD
 
 - Création du premier POD :
@@ -76,3 +83,34 @@
     $ kubectl exec -it nginx -- sh
     ```
 
+- Forwarder un port pour tester l'appli depuis la machine client kubernetes => solution temporaire
+
+    ```
+    $ kubectl port-forward nginx 8080:80
+    ```
+
+- Exposer un port du conteneur ver sun port node hôte : expose (=> création de ressource service)
+
+    ```
+    $ kubectl expose pods nginx --type=NodePort --port 80 --target-port 80
+    $ kubectl get all
+    $ kubectl get service
+    ```
+
+- Suppression des ressources :
+
+    ```bash
+    $ kubectl delete pod/nginx service/nginx
+    ```
+
+- Générer un fichier de spec yaml d'un POD :
+
+    ```bash
+    $ kubectl run nginx --image=nginx:1.19-alpine --dry-run=client -o yaml > ex_spec_pod_nginx.yaml
+    ```
+
+- Appliquer un fichier de spec : (créer la ressource, ou l'updater)
+
+    ```bash
+    $ kubectl apply -f TP_POD/ex_spec_pod_nginx.yaml
+    ```
