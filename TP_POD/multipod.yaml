@@ -9,10 +9,12 @@ spec:
       volumeMounts:
         - name: partage-multipod
           mountPath: /usr/share/nginx/html
+  initContainers:
     - name: debian
       image: debian:buster-slim
-      command: ["/bin/bash"]
-      args: ["-c", "echo Message depuis debian satellite > /partage/index.html"]
+      command: ["/bin/false"]
+      #command: ["/bin/bash"]
+      #args: ["-c", "echo Message depuis debian satellite > /partage/index.html"]
       volumeMounts:
         - name: partage-multipod
           mountPath: /partage

@@ -40,8 +40,18 @@ spec:
 
 ### 4. Appliquer le fichier de spec multipod.yaml
 
+```bash
+$ kubectl apply -f multipod.yaml
+```
+
 
 ### 5. Observer les ressources et leur status
 
+```bash
+$ kubectl get pods
+$ kubectl describe pod multipod
+```
+
+> On voit via la prise en compte initCOntainer par le POD, si l'exécution du conteneur init se termine correctement alors le POD instancie le conteneur appli
 
 ### 6. Via port-forward afficher la page web
