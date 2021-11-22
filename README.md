@@ -39,3 +39,7 @@
 
     > https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
     > https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
+
+- Convention d'utilisation
+
+    > https://kubernetes.io/fr/docs/reference/kubectl/conventions/
