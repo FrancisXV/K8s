@@ -56,6 +56,8 @@ $ kubectl api-resources
 
 ### POD
 
+> https://kubernetes.io/fr/docs/concepts/workloads/pods/pod/
+
 - Création du premier POD :
 
    ```$ kubectl run nginx --image nginx```
@@ -114,3 +116,5 @@ $ kubectl api-resources
     ```bash
     $ kubectl apply -f TP_POD/ex_spec_pod_nginx.yaml
     ```
+
+- 
