@@ -43,3 +43,20 @@
 - Convention d'utilisation
 
     > https://kubernetes.io/fr/docs/reference/kubectl/conventions/
+
+
+## Les ressources du cluster
+
+### POD
+
+- Création du premier POD :
+
+   ```$ kubectl run nginx --image nginx```
+
+- Vérification de la ressource Pod : 
+
+   ```$ kubectl get pods```
+
+- Inspection de la resource pod nginx :
+
+  ```$ kubectl describe pods nginx```
