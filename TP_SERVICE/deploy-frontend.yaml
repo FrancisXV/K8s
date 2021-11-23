@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deploy
+  name: frontend-deploy
   labels:
-    app: myphp-backend
+    app: myphp-frontend
     projet: myphp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: myphp-backend
+      app: myphp-frontend
   template:
     metadata:
       labels:
-        app: myphp-backend
+        app: myphp-frontend
     spec:
       containers:
       - name: backend
-        image: bilbloke/backend:1.0
+        image: bilbloke/frontend:1.0
         ports:
         - containerPort: 80

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug
+  labels: 
+    projet: myphp
+spec:
+  containers:
+  - name: debug
+    image: alpine:3.9
+    command:
+    - "sleep"
+    - "10000"
