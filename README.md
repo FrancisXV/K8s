@@ -22,6 +22,8 @@
 
 - Notion de cluster et contextes dans un fichier de config : ~/.kube/config
 
+- https://kubernetes.io/fr/docs/reference/kubectl/cheatsheet/
+
 - Commandes de config et check 
 
     ```bash
@@ -126,3 +128,8 @@ $ kubectl api-resources
 ### Deployment
 
 > https://kubernetes.io/fr/docs/concepts/workloads/controllers/deployment/#cr%C3%A9ation-dun-d%C3%A9ploiement> 
+
+
+### Service 
+
+> https://kubernetes.io/fr/docs/concepts/services-networking/service/
