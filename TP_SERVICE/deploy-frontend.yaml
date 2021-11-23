@@ -31,7 +31,7 @@ spec:
       #          - myphp-frontend
       #      topologyKey: "kubernetes.io/hostname"
       containers:
-      - name: backend
-        image: bilbloke/frontend:1.0
+      - name: frontend
+        image: bilbloke/frontend:2.0
         ports:
         - containerPort: 80

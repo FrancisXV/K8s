@@ -148,7 +148,27 @@ $ kubectl api-resources
 
 ### Deployment
 
-> https://kubernetes.io/fr/docs/concepts/workloads/controllers/deployment/#cr%C3%A9ation-dun-d%C3%A9ploiement> 
+> https://kubernetes.io/fr/docs/concepts/workloads/controllers/deployment/#cr%C3%A9ation-dun-d%C3%A9ploiement
+
+- Mise à l'échelle (scaling)
+
+  - Manuel via dashboard
+
+  - Manuel via client kubectl :
+  ```bash
+  $ kubectl scale -n default deployment backend-deploy --replicas=3
+  ```
+
+
+- Upgrade/rollback
+
+    - Stratégie RollingUpdate
+        - 1. Ajout de config dans le fichier de spec
+        - 2 possibilités : 
+            - modifier la version d'image dans le fichier de spec puis ```kubectl apply```
+            - en ligne de commande : ```kubectl set image deployment.apps/frontend-deploy frontend=bilbloke/frontend:2.0```
+                - /!\ repercuter la nouvelle d'image dans le fichier si c'est ok
+
 
 
 ### Service 
