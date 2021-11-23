@@ -24,4 +24,9 @@ Réaliser une preview ou validation du fichier de spec
 ### 3. Appliquer le déploiement
 
 
-### 4. commandes de check et visu
+### 4. Demander un port forward
+
+- On peut demander un port forward sur les ressources : Pod, ReplicaSet, Deployment et Service !
+
+
+### 5. commandes de check et visu
