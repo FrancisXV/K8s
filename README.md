@@ -133,3 +133,16 @@ $ kubectl api-resources
 ### Service 
 
 > https://kubernetes.io/fr/docs/concepts/services-networking/service/
+
+
+### Affinity
+
+- Vous pouvez restreindre un pod afin qu'il ne puisse s'exécuter que sur un ensemble particulier de nœuds. 
+- Il existe plusieurs façons de procéder et les approches recommandées utilisent toutes des **selector** et **labels** pour faciliter la sélection.
+
+> https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+
+```bash
+$ kubectl get pods -o wide
+$ kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name
+```
