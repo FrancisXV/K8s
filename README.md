@@ -54,6 +54,17 @@
 
     > https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/
 
+    - 1. Déploiement des ressources
+    - 2. Création accès utilisateur
+
+           > https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+    - 3. Port-forward sur le service : (temporaire)
+
+        ```bash
+        $ kubectl -n kubernetes-dashboard port-forward service/kubernetes-dashboard 8080:443
+        ```
+
 - portainer
 
 
@@ -178,3 +189,8 @@ $ kubectl get all --all-namespaces
    ```
 
 - /!\ : suppression d'un namespace = suppression de toutes les ressources du namespace
+
+
+## RBAC
+
+> https://kubernetes.io/docs/reference/access-authn-authz/rbac/
