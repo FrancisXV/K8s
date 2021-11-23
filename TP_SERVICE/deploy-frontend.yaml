@@ -32,6 +32,6 @@ spec:
       #      topologyKey: "kubernetes.io/hostname"
       containers:
       - name: frontend
-        image: bilbloke/frontend:2.0
+        image: bilbloke/frontend:1.0
         ports:
         - containerPort: 80

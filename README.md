@@ -170,6 +170,23 @@ $ kubectl api-resources
                 - /!\ repercuter la nouvelle d'image dans le fichier si c'est ok
 
 
+- Historique update
+
+    ```bash
+    $ kubectl rollout history deployment.apps/frontend-deploy
+    ```
+
+- Rollback
+
+    ```bash
+    $ kubectl rollout undo deployment.apps/frontend-deploy
+    ```
+
+- Modifier le change cause de la révision actuelle :
+
+   ```bash
+   $ kubectl annotate deployment.apps/frontend-deploy kubernetes.io/change-cause="Image frontend:1.0"
+   ```
 
 ### Service 
 
