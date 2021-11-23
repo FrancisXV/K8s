@@ -6,7 +6,12 @@ metadata:
     app: myphp-frontend
     projet: myphp
 spec:
-  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  replicas: 10
   selector:
     matchLabels:
       app: myphp-frontend
@@ -15,16 +20,16 @@ spec:
       labels:
         app: myphp-frontend
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - myphp-frontend
-            topologyKey: "kubernetes.io/hostname"
+      #affinity:
+      #  podAntiAffinity:
+      #    requiredDuringSchedulingIgnoredDuringExecution:
+      #    - labelSelector:
+      #        matchExpressions:
+      #        - key: app
+      #          operator: In
+      #          values:
+      #          - myphp-frontend
+      #      topologyKey: "kubernetes.io/hostname"
       containers:
       - name: backend
         image: bilbloke/frontend:1.0
