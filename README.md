@@ -117,4 +117,12 @@ $ kubectl api-resources
     $ kubectl apply -f TP_POD/ex_spec_pod_nginx.yaml
     ```
 
-- 
+### ReplicaSet
+
+> https://kubernetes.io/fr/docs/concepts/workloads/controllers/replicaset/
+
+- Kubernetes préconise de directement créer un deployment qui prend en charge le replicaset
+
+### Deployment
+
+> https://kubernetes.io/fr/docs/concepts/workloads/controllers/deployment/#cr%C3%A9ation-dun-d%C3%A9ploiement> 
