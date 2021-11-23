@@ -48,6 +48,16 @@
     > https://kubernetes.io/fr/docs/reference/kubectl/conventions/
 
 
+## Tableau de bord
+
+- dashboard
+
+    > https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/
+
+- portainer
+
+
+
 ## Les ressources du cluster
 
 - Lister les ressources dans mon cluster 
@@ -146,3 +156,25 @@ $ kubectl api-resources
 $ kubectl get pods -o wide
 $ kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name
 ```
+
+## Namespaces
+
+> https://kubernetes.io/fr/docs/concepts/overview/working-with-objects/namespaces/
+
+- Isolation des ressources (pas réseau)
+- Ajouter des quotas de ressource dans un namespace
+- 
+
+```bash
+$ kubectl get namespaces
+$ kubectl get all -n kubernetes-dashboard
+$ kubectl get all --all-namespaces
+```
+
+- Changer le namespace dans son contexte client kubetcl 
+
+   ```bash
+   $ kubectl config set-context --current --namespace=default
+   ```
+
+- /!\ : suppression d'un namespace = suppression de toutes les ressources du namespace
