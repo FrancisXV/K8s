@@ -1,0 +1,105 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deploy
+  labels:
+    app: myphp-backend
+    projet: myphp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myphp-backend
+  template:
+    metadata:
+      labels:
+        app: myphp-backend
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - myphp-backend
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: backend
+        image: bilbloke/backend:1.0
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: myphp-backend
+    projet: myphp
+spec:
+  selector:
+    app: myphp-backend
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deploy
+  labels:
+    app: myphp-frontend
+    projet: myphp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myphp-frontend
+  template:
+    metadata:
+      labels:
+        app: myphp-frontend
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - myphp-frontend
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: backend
+        image: bilbloke/frontend:1.0
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myphp-frontend
+  labels:
+    app: myphp-frontend
+    projet: myphp
+spec:
+  selector:
+    app: myphp-frontend
+  type: NodePort
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+      nodePort: 31001

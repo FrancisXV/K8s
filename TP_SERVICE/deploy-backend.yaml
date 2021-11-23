@@ -15,6 +15,16 @@ spec:
       labels:
         app: myphp-backend
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - myphp-frontend
+            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: backend
         image: bilbloke/backend:1.0
