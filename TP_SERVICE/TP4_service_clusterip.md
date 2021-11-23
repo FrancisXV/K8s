@@ -9,7 +9,9 @@ Dans cet exercice, vous allez créer deux Deployments et deux service pour expos
 ## 1. BACKEND
 
 
-### 1.1 Ressource Déployment
+### 1.1 Ressource Deployment
+
+- Créer un fichier de spec : deploy-backend.yaml
 
 Créez une ressource définissant un Deployment ayant les propriétés suivantes:
 
