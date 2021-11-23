@@ -12,9 +12,9 @@ spec:
   initContainers:
     - name: debian
       image: debian:buster-slim
-      command: ["/bin/false"]
-      #command: ["/bin/bash"]
-      #args: ["-c", "echo Message depuis debian satellite > /partage/index.html"]
+      #command: ["/bin/false"]
+      command: ["/bin/bash"]
+      args: ["-c", "echo Message depuis debian satellite > /partage/index.html"]
       volumeMounts:
         - name: partage-multipod
           mountPath: /partage
