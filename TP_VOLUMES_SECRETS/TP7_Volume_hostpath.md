@@ -1,5 +1,8 @@
 Dans cet exercice vous aller persister des données dans un volume de type hostpath sur un node du cluster
 
+> https://kubernetes.io/fr/docs/concepts/storage/volumes/#hostpath
+
+> https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
 
 ## 1. Ajout d'un label sur l'un des nodes du cluster
 

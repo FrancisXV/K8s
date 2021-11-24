@@ -273,6 +273,11 @@ $ kubectl get all --all-namespaces
 > https://kubernetes.io/fr/docs/concepts/configuration/secret/
 
 
+## Volumes
+
+> https://kubernetes.io/fr/docs/concepts/storage/volumes/
+
+
 ## RBAC
 
 > https://kubernetes.io/docs/reference/access-authn-authz/rbac/
