@@ -27,26 +27,30 @@ spec:
     matchLabels:
       app: php
   template:
-    volumes:
-    - name: php-volume
-      emptyDir: {}
-    initContainers:
-    - name: side-car
-      image: busybox
-      volumeMounts:
-      - name: php-volume
-        mountPath: /php_code
-      command:
-      - wget
-      - "-O"
-      - "/php_code/index.php"
-      - https://raw.githubusercontent.com/psable/php/main/myphp.php
-    containers:
-    - name: php
-      image: phpdockerio/php73-fpm
-      volumeMounts:
-      - name: php-volume
-        mountPath: /srv/http
+    metadata:
+      labels:
+        app: php
+    spec:
+      initContainers:
+      - name: side-car
+        image: busybox
+        volumeMounts:
+        - name: php-volume
+          mountPath: /php_code
+        command:
+        - wget
+        - "-O"
+        - "/php_code/index.php"
+        - https://raw.githubusercontent.com/psable/php/main/myphp.php
+      containers:
+      - name: php
+        image: phpdockerio/php73-fpm
+        volumeMounts:
+        - name: php-volume
+          mountPath: /srv/http
+      volumes:
+        - name: php-volume
+          emptyDir: {}
 ```
 
 ### 2.2 Deploiement service php-service
