@@ -80,13 +80,19 @@ spec:
 
 > https://kubernetes.io/fr/docs/tasks/configure-pod-container/configure-pod-configmap/
 
-- Approche impérative
+- Approche impérative + output yaml
 - Création du fichier yaml
+
+```bash
+$ kubectl create configmap nginx-config --from-file=nginx.conf --dry-run=client -o yaml > cm-nginx.yaml
+```
 
 
 ## 2.4 Déclaration d'un deploiement pour nginx
 
     - utiliser la configMap précédente : utiliser la notion de volume pour présenter la configMap sous forme de fichier dans le POD
+
+    - image : nginx:1.20-alpine
 
     ```yaml
     volumes:
