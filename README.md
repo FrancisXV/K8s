@@ -113,6 +113,8 @@ $ kubectl api-resources
 
 > https://kubernetes.io/fr/docs/concepts/workloads/pods/pod/
 
+> https://kubernetes.io/fr/docs/tasks/configure-pod-container/quality-service-pod/
+
 - Création du premier POD :
 
    ```$ kubectl run nginx --image nginx```
@@ -258,6 +260,17 @@ $ kubectl get all --all-namespaces
    ```
 
 - /!\ : suppression d'un namespace = suppression de toutes les ressources du namespace
+
+
+## ConfigMap
+
+> https://kubernetes.io/docs/concepts/configuration/configmap/
+
+> https://kubernetes.io/fr/docs/tasks/configure-pod-container/configure-pod-configmap/
+
+### Secrets
+
+> https://kubernetes.io/fr/docs/concepts/configuration/secret/
 
 
 ## RBAC
