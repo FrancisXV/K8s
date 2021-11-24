@@ -8,13 +8,22 @@ Dans cet exercice vous aller persister des données dans un volume de type hostp
 
 Sur l'un de vos node, posez le label type=database
 
+        ```bash
+        $ kubectl label nodes minikube-m03 type=database
+        ```
+
 ## 2. Création d'un namespace dédié à l'appli mongodb
 
 Créez le namespace mongodb
 
+```bash
+$ kubectl create namespace mongodb --dry-run=client -o yaml > ns-mongodb.yaml
+$ kubectl apply -f ns-mongodb.yaml
+```
+
 ## 3. Création d'un répertoire (FS) sur le même node
 
-Sur le même node nouvellement labellisé type=db, créer un répertoire /node-mongodb
+Sur le même node nouvellement labellisé type=database, créer un répertoire /node-mongodb
 
 ```
 $ minikube ssh -n NODE-NAME "sudo mkdir /node-mongodb"
@@ -28,7 +37,7 @@ Créer fichier de spécification définissant un Pod ayant les propriétés suiv
 - nom: mongodb
 - label associé : *app: mongodb*
 - namespace associé : *mongodb*
-- nodeSelector: *type: db*
+- nodeSelector: *type: database*
 - nom du container: *mongodb*
 - image: *mongo: 4.4*
 - volumeMount : *mountPath: /data/db*
