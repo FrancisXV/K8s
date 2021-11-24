@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+  labels:
+    app: php
+    projet: npm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  template:
+    volumes:
+    - name: php-volume
+      emptyDir: {}
+    initContainers:
+    - name: side-car
+      image: busybox
+      volumeMounts:
+      - name: php-volume
+        mountPath: /php_code
+      command:
+      - wget
+      - "-O"
+      - "/php_code/index.php"
+      - https://raw.githubusercontent.com/psable/php/main/myphp.php
+    containers:
+    - name: php
+      image: phpdockerio/php73-fpm
+      volumeMounts:
+      - name: php-volume
+        mountPath: /srv/http
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-service
+  labels:
+    projet: npm
+    app: php
+spec:
+  type: ClusterIP
+  selector:
+    app: php
+    projet: npm
+  ports:
+  - protocol: TCP
+    port: 9000
+    targetPort: 9000

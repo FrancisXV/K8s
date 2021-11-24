@@ -11,7 +11,7 @@ Nous allons configurer ce proxy de façon à ce que les requètes reçues sur le
 
 ## 2. Deploiement php
 
-- 1. Deploiement php
+- 1 : Deploiement php
 
 ```yaml
 apiVersion: apps/v1
@@ -49,7 +49,7 @@ spec:
         mountPath: /srv/http
 ```
 
-- 2. Deploiement service php-service
+- 2 : Deploiement service php-service
 
 ```yaml
 apiVersion: v1
@@ -69,3 +69,33 @@ spec:
     port: 9000
     targetPort: 9000
 ```
+
+- 3 : Creation d'une configMap à partir du fichier nginx.conf
+
+> https://kubernetes.io/docs/concepts/configuration/configmap/
+
+> https://kubernetes.io/fr/docs/tasks/configure-pod-container/configure-pod-configmap/
+
+- Approche impérative
+- Création du fichier yaml
+
+
+- 4 : Déclaration d'un deploiement pour nginx
+
+    - utiliser la configMap précédente : utiliser la notion de volume pour présenter la configMap sous forme de fichier dans le POD
+
+    ```yaml
+    volumes:
+      - name: config
+        configMap:
+          name: nginx-cm
+          items:
+          - key: config
+            path: site.conf
+    containers:
+      volumeMounts:
+      - name: config
+        mountPath: /etc/nginx/conf.d
+    ```
+
+- 5. Creer un service de type nodePort pour acceder au serveur web depuis l'exterieur du cluster
