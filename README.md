@@ -55,9 +55,18 @@
     > https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/
 
     - 1. Déploiement des ressources
+
+        ```bash
+        $ kubectl apply -f DASHBOARD/recommended.yaml
+        ```
+
     - 2. Création accès utilisateur
 
            > https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+           ```bash
+           $ kubectl apply -f DASHBOARD/dashboard-adminuser.yaml
+           ```
 
     - 3. Port-forward sur le service : (temporaire)
 
@@ -65,9 +74,16 @@
         $ kubectl -n kubernetes-dashboard port-forward service/kubernetes-dashboard 8080:443
         ```
 
+    > Minikube : $ minikube dashboard
 - portainer
 
 
+
+## Metrics server
+
+- Installation des ressources metrics serveur (préquis pour scale auto)
+
+> https://github.com/kubernetes-sigs/metrics-server
 
 ## Les ressources du cluster
 
