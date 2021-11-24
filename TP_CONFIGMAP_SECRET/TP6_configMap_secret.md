@@ -9,9 +9,9 @@
 
 Nous allons configurer ce proxy de façon à ce que les requètes reçues sur le endpoint  soient forwardées sur un service nommé *php-service*, tournant également dans le cluster. Ce service expose le pod php
 
-## 2. Deploiement php
+## 2. Deploiement 
 
-- 1 : Deploiement php
+### 2.1 : Deploiement php
 
 ```yaml
 apiVersion: apps/v1
@@ -49,7 +49,7 @@ spec:
         mountPath: /srv/http
 ```
 
-- 2 : Deploiement service php-service
+### 2.2 Deploiement service php-service
 
 ```yaml
 apiVersion: v1
@@ -70,7 +70,7 @@ spec:
     targetPort: 9000
 ```
 
-- 3 : Creation d'une configMap à partir du fichier nginx.conf
+### 2.3 Creation d'une configMap à partir du fichier nginx.conf
 
 > https://kubernetes.io/docs/concepts/configuration/configmap/
 
@@ -80,7 +80,7 @@ spec:
 - Création du fichier yaml
 
 
-- 4 : Déclaration d'un deploiement pour nginx
+## 2.4 Déclaration d'un deploiement pour nginx
 
     - utiliser la configMap précédente : utiliser la notion de volume pour présenter la configMap sous forme de fichier dans le POD
 
@@ -98,4 +98,4 @@ spec:
         mountPath: /etc/nginx/conf.d
     ```
 
-- 5. Creer un service de type nodePort pour acceder au serveur web depuis l'exterieur du cluster
+### 2.5 Creer un service de type nodePort pour acceder au serveur web depuis l'exterieur du cluster
