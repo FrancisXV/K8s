@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apache
+  name: apache
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apache
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        name: httpd
+        resources:
+          requests:
+            cpu: 10m
+          limits:
+            cpu: 0.2

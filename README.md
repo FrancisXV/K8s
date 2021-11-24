@@ -88,6 +88,18 @@
   - 1. Download du yaml
   - 2. Custom : /!\ : Sur un cluster Minikube, il manque une options dans le fichier yaml au niveau du container metrics-server -> --kubelet-insecure-tls (à ajouter après ligne 135)
   - 3. APPLY
+  - 4. Contrôle déploiement :
+
+    ```bash
+    $ kubectl get all -n kube-system -l k8s-app=metrics-server
+    $ kubectl top nodes
+    ```
+
+- MINIKUBE :
+
+```bash
+$ minikube addons enable metrics-server
+```
 
 ## Les ressources du cluster
 
