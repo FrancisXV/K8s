@@ -1,4 +1,4 @@
-# TP configMap secret
+# TP configMap
 
 
 - Utilisation d'un ConfigMap pour la configuration d'un reverse proxy
