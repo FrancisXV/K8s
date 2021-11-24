@@ -85,6 +85,10 @@
 
 > https://github.com/kubernetes-sigs/metrics-server
 
+  - 1. Download du yaml
+  - 2. Custom : /!\ : Sur un cluster Minikube, il manque une options dans le fichier yaml au niveau du container metrics-server -> --kubelet-insecure-tls (à ajouter après ligne 135)
+  - 3. APPLY
+
 ## Les ressources du cluster
 
 - Lister les ressources dans mon cluster 
