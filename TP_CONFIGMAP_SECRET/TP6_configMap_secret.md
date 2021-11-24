@@ -109,3 +109,7 @@ $ kubectl create configmap nginx-config --from-file=nginx.conf --dry-run=client 
     ```
 
 ### 2.5 Creer un service de type nodePort pour acceder au serveur web depuis l'exterieur du cluster
+
+
+### 2.6 Creation d'un secret pour l'injecter dans php
+
