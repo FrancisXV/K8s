@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php
+  name: php-npm
   labels:
-    app: php
+    app: php-npm
     projet: npm
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: php
+      app: php-npm
   template:
     metadata:
       labels:
-        app: php
+        app: php-npm
+        projet: npm
     spec:
       initContainers:
       - name: side-car
@@ -44,13 +45,94 @@ metadata:
   name: php-service
   labels:
     projet: npm
-    app: php
+    app: php-npm
 spec:
   type: ClusterIP
   selector:
-    app: php
-    projet: npm
+    app: php-npm
   ports:
   - protocol: TCP
     port: 9000
     targetPort: 9000
+
+---
+
+apiVersion: v1
+data:
+  nginx.conf: |-
+    server {
+          index index.php index.html;
+          error_log  /var/log/nginx/error.log;
+          access_log /var/log/nginx/access.log;
+          location / {
+              try_files $uri $uri/ /index.php?$query_string;
+          }
+
+          location ~* \.php$ {
+            fastcgi_index   index.php;
+            fastcgi_pass    php-service:9000;
+            include         fastcgi_params;
+            fastcgi_param   SCRIPT_FILENAME    /srv/http$fastcgi_script_name;
+            fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+          }
+        }
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  labels:
+    app: nginx-npm
+    projet: npm
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-npm
+  labels:
+    app: nginx-npm
+    projet: npm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-npm
+  template:
+    metadata:
+      labels:
+        app: nginx-npm
+        projet: npm
+    spec:
+      containers:
+      - name: nginx-npm
+        image: nginx:1.20-alpine
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+          items:
+          - key: nginx.conf
+            path: site.conf
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx-npm
+    projet: npm
+spec:
+  type: NodePort
+  selector:
+    app: nginx-npm
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31222
