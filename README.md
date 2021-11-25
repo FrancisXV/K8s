@@ -333,4 +333,16 @@ readinessProbe:
 - charts : stack de fichiers manifests
 
 > https://helm.sh/
+> https://helm.sh/fr/docs/intro/using_helm/
 > https://artifacthub.io/
+> https://helm.sh/docs/helm/helm_completion/
+
+- Binaire indépendant de K8S
+    - Il faut disposer d'une configuration kubectl pour se connecter à un cluster
+    - helm utilise kubectl et le fichier ~/.kube/config
+
+- Version:
+
+```bash
+$ helm version
+```
