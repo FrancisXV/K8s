@@ -32,6 +32,11 @@ $ kubectl get pv
 
 > https://kubernetes.io/fr/docs/concepts/configuration/secret/
 
+```bash
+$ kubectl get -n mariadb secret
+$ kubectl describe -n mariadb secret mariadb-secret
+```
+
 ## 3. Deploiement mariadb
 
 - Creer un deploiement

@@ -115,6 +115,8 @@ $ kubectl api-resources
 
 > https://kubernetes.io/fr/docs/tasks/configure-pod-container/quality-service-pod/
 
+> https://kubernetes.io/fr/docs/concepts/workloads/pods/pod-lifecycle/
+
 - Création du premier POD :
 
    ```$ kubectl run nginx --image nginx```
@@ -276,6 +278,8 @@ $ kubectl get all --all-namespaces
 ## Volumes
 
 > https://kubernetes.io/fr/docs/concepts/storage/volumes/
+
+> https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
 
 
 ## RBAC
