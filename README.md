@@ -346,3 +346,28 @@ readinessProbe:
 ```bash
 $ helm version
 ```
+
+- Config :
+    - AJout un repo qui contient des packages helm
+
+    ```bash
+    $ helm repo add grafana https://grafana.github.io/helm-charts
+    ```
+
+- Liste repo configure 
+
+```bash
+$ helm repo list
+```
+
+- Chercher un package (charts)
+
+```bash
+$ helm search repo grafana
+```
+
+- Installer un package
+
+```bash
+$ helm install my-grafana grafana/grafana
+```
