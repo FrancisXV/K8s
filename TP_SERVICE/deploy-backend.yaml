@@ -30,3 +30,15 @@ spec:
         image: bilbloke/backend:1.0
         ports:
         - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 2

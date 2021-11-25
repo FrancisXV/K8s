@@ -224,6 +224,17 @@ $ kubectl api-resources
    $ kubectl annotate deployment.apps/frontend-deploy kubernetes.io/change-cause="Image frontend:1.0"
    ```
 
+## Statefulset
+
+> https://kubernetes.io/fr/docs/concepts/workloads/controllers/statefulset/
+
+- Ex: 
+    - https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application/
+
+## Daemonset
+
+> https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+
 ### Service 
 
 > https://kubernetes.io/fr/docs/concepts/services-networking/service/
@@ -281,6 +292,32 @@ $ kubectl get all --all-namespaces
 
 > https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
 
+
+## Probes
+
+- Sondes applicatives
+
+    - Liveness : redémarrage (K8S) en cas de sonde KO (destruction conteneur) => perte de donnée
+    - Readiness : sortie du POD du service réseau : plus de traffic possible sur le POD
+
+> https://kubernetes.io/fr/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+
+- EX : Cf TP_SERVICE/deploy-backend.yaml
+
+```yaml
+livenessProbe:
+  httpGet:
+    path: /index.php
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /index.php
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 2
+```
 
 ## RBAC
 
