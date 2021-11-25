@@ -33,9 +33,12 @@ $ kubectl get pv
 > https://kubernetes.io/fr/docs/concepts/configuration/secret/
 
 ```bash
+$ kubectl apply -f sct-mariadb.yaml
 $ kubectl get -n mariadb secret
 $ kubectl describe -n mariadb secret mariadb-secret
 ```
+
+> Visible via le dashboard
 
 ## 3. Deploiement mariadb
 
