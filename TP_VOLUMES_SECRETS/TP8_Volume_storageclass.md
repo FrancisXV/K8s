@@ -22,6 +22,12 @@ $ kubectl get sc
 
 - Choix espace et accessmode
 
+
+```bash
+$ kubectl -n mariadb get pvc
+$ kubectl get pv
+```
+
 ## 3. Creation d'un secret pour le mot de la base
 
 > https://kubernetes.io/fr/docs/concepts/configuration/secret/
