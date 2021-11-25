@@ -322,3 +322,15 @@ readinessProbe:
 ## RBAC
 
 > https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+
+
+
+## HELM
+
+- gestionnaire de "paquets" : **charts** dédié à K8S
+- simplifier la génération des manifests yaml
+- versionning : updates/rollback
+- charts : stack de fichiers manifests
+
+> https://helm.sh/
+> https://artifacthub.io/
