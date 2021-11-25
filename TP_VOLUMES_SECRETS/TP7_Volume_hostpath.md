@@ -39,7 +39,7 @@ Créer fichier de spécification définissant un Pod ayant les propriétés suiv
 - namespace associé : *mongodb*
 - nodeSelector: *type: database*
 - nom du container: *mongodb*
-- image: *mongo: 4.4*
+- image: *mongo:4.4*
 - volumeMount : *mountPath: /data/db*
 - volume: *hostPath*, *path: /node-mongodb*
 
