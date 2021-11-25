@@ -73,4 +73,21 @@ spec:
           env:
             - name: MARIADB_ROOT_PASSWORD
               valueFrom:
+```
 
+
+- Application
+
+```bash
+$ kubectl apply -f deploy-mariadb.yaml
+$ kubectl -n mariadb describe pod mariadb-77dc7c8649-lxwhv
+$ kubectl logs -n mariadb deployment.apps/mariadb
+```
+
+- Check pvc -> pv
+
+```bash
+$ kubectl get pvc -n mariadb
+$ kubectl get pv
+$ kubectl describe pv pvc-3839fc07-a702-4939-b0f7-bbabc6dda024
+```
