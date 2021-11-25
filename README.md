@@ -371,3 +371,18 @@ $ helm search repo grafana
 ```bash
 $ helm install my-grafana grafana/grafana
 ```
+
+- Visu des déploiement helm
+
+```bash
+$ helm list
+$ helm status my-grafana 
+```
+
+
+- Installation d'un chart avec customisation des variables :
+    - On peut utiliser un fichier exterieur au chart :
+
+    ```bash
+    $ helm install -f helm-grafana-values.yaml my-grafana grafana/grafana
+    ```
