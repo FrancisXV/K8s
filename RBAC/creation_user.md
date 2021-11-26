@@ -11,7 +11,7 @@ Une fois l'utilisateur connu du cluster, celui-ci peu alors demander des actions
 
 - Création d'une demande de signature certificat :
 
-  > /!\ Le CN représente lenom de l'utilisateur qui sera utilisé par le client kubectl et associé aux roles dans le cluster
+  > /!\ Le CN représente le nom de l'utilisateur qui sera utilisé par le client kubectl et associé aux roles dans le cluster
 
     ```$ openssl req -new -key cert/formation.key -out cert/formation.csr -subj "/CN=formation/O=kube2021"```
 
@@ -19,7 +19,9 @@ Une fois l'utilisateur connu du cluster, celui-ci peu alors demander des actions
 
   ```$ openssl x509 -req -in cert/formation.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out cert/formation.crt -days 500```
 
-### 2. Création du user **formation** dans *kubeconfig*
+### 2. Création du user **formation** dans *kubeconfig* : 
+
+> Config du client kubectl
 
 - Ajout d'un credential user avec ces informations les certificat et clé :
 
