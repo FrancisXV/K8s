@@ -78,6 +78,23 @@
 - portainer
 
 
+## Outillage
+
+- Kube-linter
+
+    > https://docs.kubelinter.io/#/
+
+```bash
+$ ./kube-linter lint TP_REPLICASET_DEPLOY/deploy_demo_nginx.yaml
+```
+
+- Mise en place des hooks (pre-commit)
+
+    > https://pre-commit.com/hooks.html
+
+    > https://eoli3n.eu.org/2021/06/02/git-pre-commit.html
+
+
 
 ## Metrics server
 
