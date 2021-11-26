@@ -60,6 +60,15 @@
     > https://github.com/aquasecurity/kube-bench
 
 
+- Conversion compose vers k8s
+
+    > https://github.com/kubernetes/kompose
+
+    ```bash
+    $ kompose convert -o spec_kompose.yaml
+    ```
+
+
 ## Tableau de bord
 
 - dashboard
