@@ -386,3 +386,22 @@ $ helm status my-grafana
     ```bash
     $ helm install -f helm-grafana-values.yaml my-grafana grafana/grafana
     ```
+
+- Créer son propre chart
+
+```bash
+$ helm create tpchart
+```
+
+- Déploiement Portainer HELM
+
+    ```bash
+    $ helm repo add portainer https://portainer.github.io/k8s
+    $ helm install --create-namespace -n portainer portainer portainer/portainer
+    ```
+
+    - Si besoin on peut faire un port-forward sur le deployment pour tester:
+
+        ```bash
+        $ kubectl port-forward -n portainer deployment.apps/portainer 8085:9000
+        ```
