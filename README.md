@@ -361,6 +361,24 @@ readinessProbe:
 
 > https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
+- Méthode de régulation de l'accès, utilisation, création et destruction de ressources dans un cluster
+
+- Ressources supportent les accès CRUD (CREATE, READ, UPDATE, DELETE)
+
+- Imbrication des RBAC :
+    - Role et CLusterRole : ensemble de règles répresentant un ensemble d'autorisations
+        - ROLE : Autorisation à des ressources dans des namespace
+        - CLUSTERROLE : Autorisation à des ressources à l'échelle du cluster
+
+    - Subjects :
+        - identité : utilisateur, compte de service, groupes
+
+    - RoleBinding, ClusterRoleBinding
+
+```bash
+$ kubectl auth can-i delete deployment.apps/my-nginx-tpchart
+```
+
 
 
 ## HELM
